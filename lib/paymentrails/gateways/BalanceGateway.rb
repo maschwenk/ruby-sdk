@@ -7,9 +7,8 @@ module PaymentRails
     end
 
     def find(term = '')
-      response = @client.get('/v1/balances/' + term )
-      JSON.parse(response,  object_class: OpenStruct)
+      response = @client.get('/v1/balances/' + term)
+      JSON.parse(response, object_class: OpenStruct)
     end
-
   end
 end

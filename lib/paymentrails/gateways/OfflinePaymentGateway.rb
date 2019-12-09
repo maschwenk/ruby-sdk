@@ -22,11 +22,11 @@ module PaymentRails
     end
 
     def search(recipient_id = '', page = 1, page_size = 10, term = '')
-      if recipient_id === ''
-        response = @client.get('/v1/offline-payments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
-      else
-        response = @client.get('/v1/recipients/' + recipient_id + '/offlinePayments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
-      end
+      response = if recipient_id === ''
+                   @client.get('/v1/offline-payments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
+                 else
+                   @client.get('/v1/recipients/' + recipient_id + '/offlinePayments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
+                 end
 
       offline_payments_list_builder(response)
     end
