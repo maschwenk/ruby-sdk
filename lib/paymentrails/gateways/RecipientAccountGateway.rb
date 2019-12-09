@@ -35,7 +35,7 @@ module PaymentRails
       recipient_account = RecipientAccount.new
       data = JSON.parse(response)
       data.each do |key, value|
-        next unless key === 'account'
+        next unless key == 'account'
         value.each do |recipKey, recipValue|
           recipient_account.send("#{recipKey}=", recipValue)
         end
@@ -48,7 +48,7 @@ module PaymentRails
       data = JSON.parse(response)
 
       data.each do |key, value|
-        next unless key === 'accounts'
+        next unless key == 'accounts'
         value.each do |newKey, _newValue|
           recipient_account = RecipientAccount.new
           newKey.each do |key1, value1|

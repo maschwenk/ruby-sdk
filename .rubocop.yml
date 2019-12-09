@@ -5,16 +5,10 @@ inherit_from: .rubocop_todo.yml
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
-Layout/TrailingEmptyLines:
-  Enabled: false
-
 Naming/FileName:
   Enabled: false
 
 Naming/VariableName:
-  Enabled: false
-
-Style/CaseEquality:
   Enabled: false
 
 Style/Documentation:
