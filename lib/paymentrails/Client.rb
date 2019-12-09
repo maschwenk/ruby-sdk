@@ -60,15 +60,11 @@ module PaymentRails
       response.body
     end
 
-    private
-
     def generate_authorization(time, endPoint, method, body)
       message = [time.to_s, method, endPoint, body].join("\n") + "\n"
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), @config.privateKey, message)
       'prsign ' + @config.publicKey + ':' + signature
     end
-
-    private
 
     def throw_status_code_exception(message, code)
       case code
