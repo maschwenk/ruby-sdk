@@ -50,7 +50,7 @@ module PaymentRails
       batch = Batch.new
       data = JSON.parse(response)
       data.each do |key, value|
-        next unless key === 'batch'
+        next unless key == 'batch'
         value.each do |newKey, newValue|
           batch.send("#{newKey}=", newValue)
         end
@@ -63,7 +63,7 @@ module PaymentRails
       summary = BatchSummary.new
       data = JSON.parse(response)
       data.each do |key, value|
-        next unless key === 'batchSummary'
+        next unless key == 'batchSummary'
         value.each do |newKey, newValue|
           summary.send("#{newKey}=", newValue)
         end
@@ -76,7 +76,7 @@ module PaymentRails
       data = JSON.parse(response)
 
       data.each do |key, value|
-        next unless key === 'batches'
+        next unless key == 'batches'
         value.each do |newKey, _newValue|
           batch = Batch.new
           newKey.each do |key1, value1|

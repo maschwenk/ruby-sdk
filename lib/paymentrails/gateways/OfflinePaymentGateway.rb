@@ -22,7 +22,7 @@ module PaymentRails
     end
 
     def search(recipient_id = '', page = 1, page_size = 10, term = '')
-      response = if recipient_id === ''
+      response = if recipient_id == ''
                    @client.get('/v1/offline-payments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
                  else
                    @client.get('/v1/recipients/' + recipient_id + '/offlinePayments?page=' + page.to_s + '&pageSize=' + page_size.to_s + '&search=' + term)
@@ -35,7 +35,7 @@ module PaymentRails
       offline_payment = OfflinePayment.new
       data = JSON.parse(response)
       data.each do |key, value|
-        next unless key === 'offlinePayment'
+        next unless key == 'offlinePayment'
         value.each do |opKey, opValue|
           offline_payment.send("#{opKey}=", opValue)
         end
@@ -48,7 +48,7 @@ module PaymentRails
       data = JSON.parse(response)
 
       data.each do |key, value|
-        next unless key === 'offlinePayments'
+        next unless key == 'offlinePayments'
         value.each do |newKey, _newValue|
           offline_payment = OfflinePayment.new
           newKey.each do |key1, value1|

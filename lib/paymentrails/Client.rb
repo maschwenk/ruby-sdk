@@ -42,15 +42,15 @@ module PaymentRails
                   'Authorization': generate_authorization(time, endPoint, method, body),
                   'Content-Type': 'application/json' }
 
-      if method === 'GET'
+      if method == 'GET'
         request = Net::HTTP::Get.new(uri.request_uri, headers)
-      elsif method === 'POST'
+      elsif method == 'POST'
         request = Net::HTTP::Post.new(uri.request_uri, headers)
         request.body = body
-      elsif method === 'PATCH'
+      elsif method == 'PATCH'
         request = Net::HTTP::Patch.new(uri.request_uri, headers)
         request.body = body
-      elsif method === 'DELETE'
+      elsif method == 'DELETE'
         request = Net::HTTP::Delete.new(uri.request_uri, headers)
       end
 
